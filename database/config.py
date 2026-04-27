@@ -2,7 +2,7 @@
 from configparser import ConfigParser
 
 # Define a function to read from the database.ini file
-def config(filename='database/database.ini', section='postgresql'):
+def config(filename='database.ini', section='postgresql'):
     # creating the parser
     parser = ConfigParser()
     # read config file
@@ -15,10 +15,12 @@ def config(filename='database/database.ini', section='postgresql'):
         # creating a for loop to iterate through the items in the section and add them to the dictionary
         for param in params:
             db[param[0]] = param[1]
-        else:
-            raise Exception(f'Section {section} not found in the {filename} file')
+    else:
+        raise Exception(f"Section '{section}' not found in the '{filename}' file.")
     # return db
+
     # show what's in the db dictionary
     print(db)
+
 
 config()
