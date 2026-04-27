@@ -17,9 +17,7 @@ def config(filename='database.ini', section='postgresql'):
             db[param[0]] = param[1]
     else:
         raise Exception(f"Section '{section}' not found in the '{filename}' file.")
-    # return db
+    return db
 
     # show what's in the db dictionary
-    print(db)
-
-config()
+    # print(db)
