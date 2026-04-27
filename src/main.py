@@ -2,7 +2,7 @@
 # This will connect the PostgreSQL database and run the application.
 
 import psycopg2  # type: ignore[import]
-import database.config as config
+import config as config
 
 # creating the function to connect to the PostgreSQL database
 def connect():
