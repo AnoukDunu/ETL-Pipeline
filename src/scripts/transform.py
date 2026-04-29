@@ -1,4 +1,3 @@
-# importing pandas to work with dataframes and perform data manipulation tasks (extracting basically).
 import pandas as pd
 
 #transform data function
