@@ -7,8 +7,8 @@ from config import config
 # importing pandas to work with dataframes and perform data manipulation tasks (extracting basically).
 import pandas as pd
 
-# use the below 'file_path' variable insert the file name and path to this variable to extract the data from.
-file_path = '../data/test.csv'
+# use the below 'file_name' variable insert the file name and path to this variable to extract the data from.
+file_name = 'test.csv'
 
 # creating the function to connect to the PostgreSQL database
 def connect():
@@ -38,13 +38,13 @@ def connect():
             print("Database connection closed.")
 
 
-def extract_data(file_path):
+def extract_data(file_name):
     # This function will extract data from the data file and return it as a pandas dataframe.
     # adding a try-except block for error handingling and seeing if the dataframe is empty after reading the data file.
     try:
-        df = pd.read_csv(file_path)
+        df = pd.read_csv(f"../data/{file_name}")
         if df.empty:
-            raise ValueError(f'Dataframe is empty after reading {file_path}')
+            raise ValueError(f'Dataframe is empty after reading {file_name}')
         print("Data extracted successfully:")
         return df
     except Exception as error:
@@ -56,5 +56,5 @@ def extract_data(file_path):
 if __name__ == "__main__":
     connect()
 
-    extract_data(file_path)
+    extract_data(file_name)
 
