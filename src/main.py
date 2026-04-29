@@ -10,6 +10,7 @@ file_name = 'data.csv'
 
 # creating the main function to run the ETL pipeline
 def run_pipeline():
+    # NEED TO ADD ERROR HANDLING TO THIS FUNCTION TO HANDLE ANY EXCEPTIONS THAT MAY OCCUR DURING THE ETL PROCESS.
     # connect to the database using the connect function and passing the config function as an argument to it to get the connection parameters from the database.ini file.
     connect(config)
     # extracting the data from the data file using the extract function and passing the file name as an argument to it to get the data as a pandas dataframe.
