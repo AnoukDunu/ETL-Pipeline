@@ -1,10 +1,12 @@
 # This is the main file.
 # This will connect the PostgreSQL database and run the application.
-
 import psycopg2
 from config import config
 # importing pandas to work with dataframes and perform data manipulation tasks (extracting basically).
 import pandas as pd
+
+# use the below 'filename' variable insert the file name and path to this variable to extract the data from.
+filename = '../data/test.csv'
 
 # creating the function to connect to the PostgreSQL database
 def connect():
@@ -34,13 +36,13 @@ def connect():
             print("Database connection closed.")
 
 
-def extract_data():
+def extract_data(filename):
     # This function will extract data from the data file and return it as a pandas dataframe.
     # adding a try-except block for error handingling and seeing if the dataframe is empty after reading the data file.
     try:
-        df = pd.read_csv('data/wholesale-trade.csv')
+        df = pd.read_csv(filename)
         if df.empty:
-            raise ValueError('Dataframe is empty after reading data/data.csv')
+            raise ValueError(f'Dataframe is empty after reading {filename}')
         print("Data extracted successfully:")
         return df
     except Exception as error:
@@ -52,5 +54,5 @@ def extract_data():
 if __name__ == "__main__":
     connect()
 
-    extract_data()
+    extract_data(filename)
 
