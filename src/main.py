@@ -38,7 +38,7 @@ def extract_data():
     # This function will extract data from the data file and return it as a pandas dataframe.
     # adding a try-except block for error handingling and seeing if the dataframe is empty after reading the data file.
     try:
-        df = pd.read_csv('data/data.csv')
+        df = pd.read_csv('data/wholesale-trade.csv')
         if df.empty:
             raise ValueError('Dataframe is empty after reading data/data.csv')
         print("Data extracted successfully:")
