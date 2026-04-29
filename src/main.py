@@ -1,7 +1,7 @@
 # This is the main file.
 from scripts.extract import extract
 from scripts.transform import transform
-from scripts.load import load
+# from scripts.load import load
 from database.connect import connect
 
 from database.config import config
