@@ -8,7 +8,7 @@ from config import config
 import pandas as pd
 
 # use the below 'file_name' variable insert the file name and path to this variable to extract the data from.
-file_name = 'test.csv'
+file_name = 'data.csv'
 
 # creating the function to connect to the PostgreSQL database
 def connect():
@@ -37,7 +37,7 @@ def connect():
             connection.close()
             print("Database connection closed.")
 
-
+# extract data function
 def extract_data(file_name):
     # This function will extract data from the data file and return it as a pandas dataframe.
     # adding a try-except block for error handingling and seeing if the dataframe is empty after reading the data file.
@@ -51,10 +51,24 @@ def extract_data(file_name):
         print(f"Error extracting data: {error}")
         return pd.DataFrame()
 
-
+#transform data function
+def transform_data(df):
+    # This function will transform the data and return the transformed dataframe.
+    # adding a try-except block for error handling and seeing if the dataframe is empty after transforming the data.
+    try:
+        # Example transformation: converting all column names to lowercase
+        df.columns = [col.lower() for col in df.columns]
+        if df.empty:
+            raise ValueError('Dataframe is empty after transformation')
+        print("Data transformed successfully:")
+        return df
+    except Exception as error:
+        print(f"Error transforming data: {error}")
+        return pd.DataFrame()
 
 if __name__ == "__main__":
     connect()
 
-    extract_data(file_name)
-
+    extracted_df = extract_data(file_name)
+    transformed_df = transform_data(extracted_df)
+    print(transformed_df)
