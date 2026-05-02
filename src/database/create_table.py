@@ -1,0 +1,1 @@
+# This file will contain the table creation code for the database. Here you can customize the table structure and the data types of the columns as per your requirements. You can also add any constraints or indexes to the table if needed.
