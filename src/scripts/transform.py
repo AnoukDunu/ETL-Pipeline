@@ -14,3 +14,6 @@ def transform(df):
     except Exception as error:
         print(f"Error transforming data: {error}")
         return pd.DataFrame()
+    
+
+# LOOK UP HOW TO DO DATA CLEANING, FILTERING AND FORMATTING PROPERLY. ADD RELEVANT CODE AND IMPLEMENT IN THE FUTURE
