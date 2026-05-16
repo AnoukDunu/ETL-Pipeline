@@ -8,7 +8,7 @@ from database.config import config
 import os
 
 # use the below 'file_name' variable insert the file name and path to this variable to extract the data from.
-file_name = 'data.csv'
+file_name = 'customers_data.csv'
 
 # Get the directory where this script is located
 base_dir = os.path.dirname(os.path.abspath(__file__))
