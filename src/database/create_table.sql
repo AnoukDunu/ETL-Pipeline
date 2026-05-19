@@ -1,8 +1,8 @@
 CREATE TABLE testbank.customers (
     customer_id SERIAL PRIMARY KEY,
-    firstname VARCHAR(50) NOT NULL,
-    lastname VARCHAR(50) NOT NULL,
-    phone_number VARCHAR(20),
+    firstname VARCHAR(100) NOT NULL,
+    lastname VARCHAR(100) NOT NULL,
+    phone_number VARCHAR(100),
     email VARCHAR(100) UNIQUE,
     location VARCHAR(100),
     company VARCHAR(100),
