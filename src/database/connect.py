@@ -3,6 +3,8 @@ import sys
 import psycopg2
 # from config import config
 # creating the function to connect to the PostgreSQL database
+
+
 def connect(config):
     connection = None
     # using a try-except block to handle any exceptions that may occur during the connection process
