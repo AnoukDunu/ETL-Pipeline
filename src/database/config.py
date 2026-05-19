@@ -1,10 +1,26 @@
 # This file will parse the data inside database.ini and return the connection parameters as a dictionary.
 from configparser import ConfigParser
+from pathlib import Path
 
 # Define a function to read from the database.ini file
-def config(filename='database.ini', section='postgresql'):
+def config(filename=None, section='postgresql'):
     # creating the parser
     parser = ConfigParser()
+
+    # ========= this section was added by copilot to fix a pathing issue with the database.ini file. =========
+    if filename is None:
+        filename = Path(__file__).resolve().parent / 'database.ini'
+    else:
+        filename = Path(filename)
+        if not filename.is_absolute():
+            filename = Path.cwd() / filename
+
+    if not filename.exists():
+        raise FileNotFoundError(f"Configuration file not found: {filename}")
+    # ========================================================================================================
+
+
+    
     # read config file
     parser.read(filename)
     # creating a dictionary to store all the data read from the database.ini file

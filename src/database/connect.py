@@ -7,7 +7,7 @@ def connect(config):
     connection = None
     # using a try-except block to handle any exceptions that may occur during the connection process
     try:
-            params = config
+            params = config()
             print("Connecting to the PostgreSQL database...")
 
             # The **params unpacks the dictionary returned by the config function and passes it as keyword arguments to the connect function of psycopg2.
