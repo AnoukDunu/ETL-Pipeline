@@ -7,6 +7,9 @@ def transform(df):
     try:
         # Example transformation: converting all column names to lowercase
         df.columns = [col.lower() for col in df.columns]
+        # removing the spaces between words in the column names to standardize the column names and make them easier to work with.
+        df.columns = [col.replace(' ', '_') for col in df.columns]
+        
         if df.empty:
             raise ValueError('Dataframe is empty after transformation')
         print("Data transformed successfully:")
@@ -14,6 +17,8 @@ def transform(df):
     except Exception as error:
         print(f"Error transforming data: {error}")
         return pd.DataFrame()
+    
+    
     
 
 # LOOK UP HOW TO DO DATA CLEANING, FILTERING AND FORMATTING PROPERLY. ADD RELEVANT CODE AND IMPLEMENT IN THE FUTURE
