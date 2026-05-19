@@ -18,9 +18,8 @@ def transform(df):
             # tells panda to look at columns (axis=1) and drop the city and country columns after creating the location column to clean up the dataframe and remove redundant information.
             df = df.drop(['city', 'country'], axis=1)
 
-        df = df.drop(['subscription_date', 'website'], axis=1)
+        df = df.drop(['phone_2', 'website'], axis=1)
 
-        df = df.drop (['phone_2'], axis=1)
         # checking if the dataframe is empty after transforming the data and raising an error if it is to ensure that we have valid data to work with after the transformation process.
         if df.empty:
             raise ValueError('Dataframe is empty after transformation')
