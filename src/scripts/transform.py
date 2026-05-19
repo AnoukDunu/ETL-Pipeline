@@ -1,3 +1,5 @@
+import sys
+
 import pandas as pd
 
 #transform data function
@@ -27,7 +29,9 @@ def transform(df):
         return df
     except Exception as error:
         print(f"Error transforming data: {error}")
-        return pd.DataFrame()
+        # if error occurs during the transformation process, we print the error message and exit the program with a non-zero status code to indicate that an error occurred.
+        sys.exit(1)
+        # return pd.DataFrame()
     
     
     

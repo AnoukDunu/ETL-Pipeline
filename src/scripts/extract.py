@@ -1,4 +1,6 @@
 # importing pandas to work with dataframes and perform data manipulation tasks (extracting basically).
+import sys
+
 import pandas as pd
 
 # extract data function
@@ -13,4 +15,6 @@ def extract(file_name):
         return df
     except Exception as error:
         print(f"Error extracting data: {error}")
-        return pd.DataFrame()
+        # if error occurs during the extraction process, we print the error message and exit the program with a non-zero status code to indicate that an error occurred.
+        sys.exit(1)
+        # return pd.DataFrame()
