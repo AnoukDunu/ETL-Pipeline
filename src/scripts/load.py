@@ -4,7 +4,12 @@ import psycopg2
 
 from database.config import config
 
-def load (df):
+def load (df, table_name):
+    # condition to check if the dataframe is empty or not. If it is empty, we print a message and exit the program with a non-zero status code to indicate that an error occurred.
+    if df is None or df.empty:
+        print("No data to load.")
+        sys.exit(1)
+
     # initialising the database connection to start the loading process.
     connection = None
     try:
@@ -21,6 +26,8 @@ def load (df):
         # fetchone() retrieves the next row of a query result set, returning a single sequence, or None when no more data is available.
         db_version = cursor.fetchone()
         print(db_version)
+        # temp success message to confirm the behaviours of variables passed.
+        print(f"Successfully loaded {len(df)} rows of data into {table_name} table...")
         # need to close the cursor after use (very important to avoid memory leaks)
         cursor.close()
     except (Exception, psycopg2.DatabaseError) as error:
