@@ -2,37 +2,28 @@
 from scripts.extract import extract
 from scripts.transform import transform
 from scripts.load import load
-# from database.connect import connect
 
-# from database.config import config
-# import os
 
 # use the below 'file_name' variable insert the file name and path to this variable to extract the data from.
 file_name = 'customers_data.csv'
 # enter the table/schema.table name that you want to load the data into in the 'table_name' variable below.
 table_name = 'customers'
 
-# # Get the directory where this script is located
-# base_dir = os.path.dirname(os.path.abspath(__file__))
-# db_ini_path = os.path.join(base_dir, 'database', 'database.ini')
 
 # creating the main function to run the ETL pipeline
 def run_pipeline():
     # NEED TO ADD ERROR HANDLING TO THIS FUNCTION TO HANDLE ANY EXCEPTIONS THAT MAY OCCUR DURING THE ETL PROCESS.
    
-   
-    # # connect to the database using the connect function and passing the config function as an argument to it to get the connection parameters from the database.ini file.
-    # # the line below was added by copilot to fix a pathing issue with the database.ini file.
-    # connect(lambda: config(db_ini_path))
-
-
     # extracting the data from the data file using the extract function and passing the file name as an argument to it to get the data as a pandas dataframe.
     extracted_df = extract(file_name)
     # transforming the data using the transform function and passing the extracted dataframe as an argument to it to get the transformed dataframe.
     transformed_df = transform(extracted_df)
+    print(transformed_df)
     # loading the transformed data into the database using the load function and passing the transformed dataframe as an argument to it to get the loaded dataframe.
     loaded_df = load(transformed_df, table_name)
-    print(loaded_df)
+    
+    
+    return loaded_df
 
 # This is the entry point of the script. When the script is run, it will execute the run_pipeline function.
 if __name__ == "__main__":

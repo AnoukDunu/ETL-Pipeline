@@ -26,6 +26,16 @@ def load (df, table_name):
         # fetchone() retrieves the next row of a query result set, returning a single sequence, or None when no more data is available.
         db_version = cursor.fetchone()
         print(db_version)
+
+        for _, row in df.iterrows():
+            # creating an insert query to insert the data into the database. The %s placeholders will be replaced with the actual values from the dataframe.
+            insert_query = f"INSERT INTO {table_name} (customer_id, firstname, lastname, phone_number, email, location, company, joined_date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+            # executing the insert query with the values from the dataframe. The row['column_name'] syntax is used to access the values from the dataframe for each column.
+            cursor.execute(insert_query, (row['customer_id'], row['first_name'], row['last_name'], row['phone_1'], row['email'], row['location'], row['company'], row['subscription_date']))
+
+        # committing the transaction to save the changes to the database.
+        connection.commit()
+
         # temp success message to confirm the behaviours of variables passed.
         print(f"Successfully loaded {len(df)} rows of data into {table_name} table...")
         # need to close the cursor after use (very important to avoid memory leaks)
