@@ -35,6 +35,7 @@ def load (df, table_name):
 
         # committing the transaction to save the changes to the database.
         connection.commit()
+        print("Data committed to database successfully.")
 
         # temp success message to confirm the behaviours of variables passed.
         print(f"Successfully loaded {len(df)} rows of data into {table_name} table...")
