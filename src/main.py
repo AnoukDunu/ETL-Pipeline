@@ -18,7 +18,6 @@ def run_pipeline():
     extracted_df = extract(file_name)
     # transforming the data using the transform function and passing the extracted dataframe as an argument to it to get the transformed dataframe.
     transformed_df = transform(extracted_df)
-    print(transformed_df)
     # loading the transformed data into the database using the load function and passing the transformed dataframe as an argument to it to get the loaded dataframe.
     loaded_df = load(transformed_df, table_name)
     
