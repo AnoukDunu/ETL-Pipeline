@@ -7,13 +7,11 @@ st.title('AnoukBank Customer Data Dashboard')
 
 st.markdown(
     """ 
-    This is a playground for you to try Streamlit and have fun. 
+    This is a test web application to Streamlit and run the ETL Pipeline. 
 
-    **There's :rainbow[so much] you can build!**
+    **There's :rainbow[so much] you can do with an ETL Pipeline! (not really)**
     
-    We prepared a few examples for you to get started. Just 
-    click on the buttons above and discover what you can do 
-    with Streamlit. 
+    click on the button below to run the ETL Pipeline and see a cute animation 
     """
 )
 
