@@ -28,14 +28,20 @@ def load (df, table_name):
         print(db_version)
 
         for _, row in df.iterrows():
-            # creating an insert query to insert the data into the database. The %s placeholders will be replaced with the actual values from the dataframe.
-            insert_query = f"INSERT INTO {table_name} (customer_id, firstname, lastname, phone_number, email, location, company, joined_date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
-            # executing the insert query with the values from the dataframe. The row['column_name'] syntax is used to access the values from the dataframe for each column.
-            cursor.execute(insert_query, (row['customer_id'], row['first_name'], row['last_name'], row['phone_1'], row['email'], row['location'], row['company'], row['subscription_date']))
-
-        # committing the transaction to save the changes to the database.
-        connection.commit()
-        print("Data committed to database successfully.")
+            # adding error handling for duplicate rows so that everytime the ETL is run, only inserts the new rows that are not already in the database and skips the duplicate rows to avoid any errors or issues with the loading process.
+            try:
+                # creating an insert query to insert the data into the database. The %s placeholders will be replaced with the actual values from the dataframe.
+                insert_query = f"INSERT INTO {table_name} (customer_id, firstname, lastname, phone_number, email, location, company, joined_date) VALUES (%s, %s, %s, %s, %s, %s, %s, %s)"
+                # executing the insert query with the values from the dataframe. The row['column_name'] syntax is used to access the values from the dataframe for each column.
+                cursor.execute(insert_query, (row['customer_id'], row['first_name'], row['last_name'], row['phone_1'], row['email'], row['location'], row['company'], row['subscription_date']))
+            except psycopg2.errors.UniqueViolation:
+                # Ignore duplicate rows
+                connection.rollback()
+            else:
+                 # committing the transaction to save the changes to the database.
+                connection.commit()
+                print("Data committed to database successfully.")
+       
 
         # temp success message to confirm the behaviours of variables passed.
         print(f"Successfully loaded {len(df)} rows of data into {table_name} table...")
