@@ -3,7 +3,6 @@ from scripts.extract import extract
 from scripts.transform import transform
 from scripts.load import load
 
-
 # use the below 'file_name' variable insert the file name and path to this variable to extract the data from.
 file_name = 'customers_data.csv'
 # enter the table/schema.table name that you want to load the data into in the 'table_name' variable below.
