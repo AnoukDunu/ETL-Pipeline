@@ -12,16 +12,15 @@ table_name = 'testbank.customers'
 # creating the main function to run the ETL pipeline
 def run_pipeline():
     # NEED TO ADD ERROR HANDLING TO THIS FUNCTION TO HANDLE ANY EXCEPTIONS THAT MAY OCCUR DURING THE ETL PROCESS.
-   
+
     # extracting the data from the data file using the extract function and passing the file name as an argument to it to get the data as a pandas dataframe.
     extracted_df = extract(file_name)
     # transforming the data using the transform function and passing the extracted dataframe as an argument to it to get the transformed dataframe.
-    transformed_df = transform(extracted_df)
+    transformed_df = transform(extracted_df.copy())
     # loading the transformed data into the database using the load function and passing the transformed dataframe as an argument to it to get the loaded dataframe.
-    loaded_df = load(transformed_df, table_name)
-    
-    
-    return loaded_df
+    loaded_df = load(transformed_df.copy(), table_name)
+
+    return transformed_df, loaded_df
 
 # This is the entry point of the script. When the script is run, it will execute the run_pipeline function.
 if __name__ == "__main__":
