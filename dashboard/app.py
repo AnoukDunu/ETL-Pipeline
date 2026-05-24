@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import numpy as np
 # the following import is to run a python script which is completely external to this dashboard and is not imported as a module.
 import subprocess
 
@@ -27,6 +28,22 @@ if st.button("Run ETL Pipeline"):
     if result.returncode == 0:
         st.success("ETL Pipeline executed successfully!")
         st.text(result.stdout)
+
+        # just trying stuff out and playing around with streamlit and how it handles dataframes
+        # num_rows = st.slider("Number of rows", 1, 10000, 500)
+        # np.random.seed(42)
+        # data = []
+        # for i in range(num_rows):
+        #     data.append(
+        #         {
+        #             "Customer ID": f"{i}",
+        #             "First Name": np.random.randint(0, 1000),
+        #             "Last Name": np.random.choice([True, False]),
+        #             "Location": np.random.choice(["🤖 LLM", "📊 Data", "⚙️ Tool"]),
+        #             "Progress": np.random.randint(1, 100),
+        #         }
+        #     )
+        # data = pd.DataFrame(data)
     else:
         st.error("Error executing ETL Pipeline.")
         st.text(result.stderr)
