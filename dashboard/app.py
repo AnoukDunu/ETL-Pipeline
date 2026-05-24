@@ -47,3 +47,5 @@ if st.button("Run ETL Pipeline"):
     else:
         st.error("Error executing ETL Pipeline.")
         st.text(result.stderr)
+
+    
