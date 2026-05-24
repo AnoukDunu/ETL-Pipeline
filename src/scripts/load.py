@@ -6,7 +6,6 @@ from database.config import config
 
 # adding logging to the main file to log the progress of the ETL pipeline and any errors that may occur during the process to help with debugging and monitoring the pipeline.
 import logging
-from datetime import datetime
 import os
 
 # Ensure logs folder exists, if not creates logs folder
