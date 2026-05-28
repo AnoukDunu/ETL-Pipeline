@@ -12,7 +12,7 @@ if str(SRC) not in sys.path:
 
 from main import run_pipeline
 
-st.title("AnoukBank Customer Data Dashboard")
+st.title("TotallyANZ Bank Customer Data Dashboard")
 
 st.markdown(
     """
