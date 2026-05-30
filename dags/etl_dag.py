@@ -1,5 +1,5 @@
 from airflow import DAG
-from airflow.operators.bash import BashOperator
+from airflow.operators.bash_operator import BashOperator
 from datetime import datetime, timedelta
 
 default_args = {
@@ -17,4 +17,5 @@ dag = DAG(
     default_args=default_args,
     description='ETL Pipeline for processing customer data',
     schedule_interval=timedelta(days=1),
+    catchup=False,
 )
