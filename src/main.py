@@ -24,5 +24,5 @@ def run_pipeline():
     return loaded_df
 
 # This is the entry point of the script. When the script is run, it will execute the run_pipeline function.
-# if __name__ == "__main__":
-#     run_pipeline()
+if __name__ == "__main__":
+    run_pipeline()
