@@ -13,7 +13,7 @@ with DAG(
     'etl_sales_data',
     default_args=default_args,
     description='ETL pipeline for sales_data',
-    schedule_interval='@daily',  # runs every day
+    schedule='@daily',  # runs every day
     catchup=False
 ) as dag:
 
